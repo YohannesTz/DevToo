@@ -82,7 +82,7 @@ fun ArticleListItem(
             Box(modifier = Modifier.padding(top = 0.dp, bottom = 0.dp)) {
                 FlowRow(
                     mainAxisSpacing = 8.dp,
-                    crossAxisSpacing = 8.dp,
+                    crossAxisSpacing = 2.dp,
                 ) {
                     article.tagList?.forEach { tag ->
                         AssistChip(
