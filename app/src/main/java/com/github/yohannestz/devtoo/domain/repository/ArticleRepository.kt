@@ -5,7 +5,7 @@ import com.github.yohannestz.devtoo.data.remote.dto.ArticleDto
 
 interface ArticleRepository {
 
-    suspend fun getArticles(): List<ArticleDto>
+    suspend fun getArticles(page: Int, perPage: Int): List<ArticleDto>
 
     suspend fun getArticleById(articleId: Int): ArticleDetailDto
 }

@@ -24,7 +24,7 @@ class ArticleListViewModel @Inject constructor(
     }
 
     private fun getArticles() {
-        getArticlesUseCase().onEach { result ->
+        getArticlesUseCase(1, 20).onEach { result ->
             when (result) {
                 is Resource.Success -> {
                     _state.value = ArticleListState(articles = result.data ?: emptyList())

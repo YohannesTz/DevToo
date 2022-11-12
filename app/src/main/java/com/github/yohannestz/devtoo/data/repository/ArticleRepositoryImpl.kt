@@ -9,8 +9,8 @@ import javax.inject.Inject
 class ArticleRepositoryImpl @Inject constructor(
     private val api: DevToArticlesApi
 ): ArticleRepository {
-    override suspend fun getArticles(): List<ArticleDto> {
-        return api.getArticles()
+    override suspend fun getArticles(page: Int, perPage: Int): List<ArticleDto> {
+        return api.getArticles(page, perPage)
     }
 
     override suspend fun getArticleById(articleId: Int): ArticleDetailDto {

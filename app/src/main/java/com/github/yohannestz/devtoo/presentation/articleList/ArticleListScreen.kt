@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.github.yohannestz.devtoo.presentation.Screen
-import com.github.yohannestz.devtoo.presentation.articleList.compontents.ArticleListItem
+import com.github.yohannestz.devtoo.presentation.articleList.components.ArticleListItem
 
 @Composable
 fun ArticleListScreen(

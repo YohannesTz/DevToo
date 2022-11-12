@@ -1,6 +1,4 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
-package com.github.yohannestz.devtoo.presentation.articleList.compontents
+package com.github.yohannestz.devtoo.presentation.articleList.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -11,18 +9,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import coil.compose.rememberAsyncImagePainter
 import com.github.yohannestz.devtoo.domain.models.Article
 import com.google.accompanist.flowlayout.FlowRow
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ArticleListItem(
     article: Article,
@@ -81,7 +76,7 @@ fun ArticleListItem(
 
             Box(modifier = Modifier.padding(top = 0.dp, bottom = 0.dp)) {
                 FlowRow(
-                    mainAxisSpacing = 8.dp,
+                    mainAxisSpacing = 4.dp,
                     crossAxisSpacing = 2.dp,
                 ) {
                     article.tagList?.forEach { tag ->
