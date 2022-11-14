@@ -4,8 +4,8 @@ import com.github.yohannestz.devtoo.domain.models.Article
 
 data class ArticleListState(
     val isLoading: Boolean = false,
-    val articles: List<Article> = emptyList(),
+    var articles: List<Article> = emptyList(),
     val error: String = "",
     val endReached: Boolean = false,
-    val page: Int = 0
+    var page: Int = 1
 )

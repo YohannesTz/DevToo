@@ -27,10 +27,18 @@ fun ArticleListScreen(
     val state = viewModel.state.value
     Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(state.articles) { article ->
+            items(state.articles.size) { i ->
+                val article = state.articles[i]
+                if (i >= state.articles.size - 1 && !state.isLoading) {
+                    viewModel.updatePage()
+                }
                 ArticleListItem(article = article, onItemClick = {
                     navController.navigate(Screen.ArticleDetailScreen.route + "/${article.id.toString()}")
                 })
+
+                if(state.isLoading) {
+                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                }
             }
         }
 
@@ -44,9 +52,6 @@ fun ArticleListScreen(
                     .padding(horizontal = 20.dp)
                     .align(Alignment.Center)
             )
-        }
-        if(state.isLoading) {
-            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
         }
     }
 }

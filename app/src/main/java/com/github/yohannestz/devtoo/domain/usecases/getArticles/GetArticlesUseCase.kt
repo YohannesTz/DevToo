@@ -17,6 +17,7 @@ class GetArticlesUseCase @Inject constructor(
 ) {
 
     operator fun invoke(page: Int, perPage: Int): Flow<Resource<List<Article>>> = flow {
+
         try {
             emit(Resource.Loading())
             val articles = repository.getArticles(page, perPage).map { it.toArticle() }

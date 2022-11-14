@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.yohannestz.devtoo.common.Resource
 import com.github.yohannestz.devtoo.domain.usecases.getArticles.GetArticlesUseCase
+import com.github.yohannestz.devtoo.pagination.DefaultPaginator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -23,8 +24,13 @@ class ArticleListViewModel @Inject constructor(
         getArticles()
     }
 
+    fun updatePage() {
+        _state.value.page += 1
+        getArticles()
+    }
+
     private fun getArticles() {
-        getArticlesUseCase(1, 20).onEach { result ->
+        getArticlesUseCase(_state.value.page, 20).onEach { result ->
             when (result) {
                 is Resource.Success -> {
                     _state.value = ArticleListState(articles = result.data ?: emptyList())

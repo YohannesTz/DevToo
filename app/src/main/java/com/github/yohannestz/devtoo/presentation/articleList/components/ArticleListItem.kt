@@ -9,10 +9,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.github.yohannestz.devtoo.R
 import com.github.yohannestz.devtoo.domain.models.Article
 import com.google.accompanist.flowlayout.FlowRow
 
@@ -29,7 +31,7 @@ fun ArticleListItem(
             .fillMaxWidth()
             .padding(15.dp)
             .clickable { onItemClick(article) },
-        shape = RoundedCornerShape(10.dp)
+        shape = RoundedCornerShape(8.dp)
     ) {
         Column(
             modifier = Modifier
@@ -77,7 +79,7 @@ fun ArticleListItem(
             Box(modifier = Modifier.padding(top = 0.dp, bottom = 0.dp)) {
                 FlowRow(
                     mainAxisSpacing = 4.dp,
-                    crossAxisSpacing = 2.dp,
+                    crossAxisSpacing = 4.dp,
                 ) {
                     article.tagList?.forEach { tag ->
                         AssistChip(
@@ -87,6 +89,25 @@ fun ArticleListItem(
                             },
                             shape = RoundedCornerShape(16.dp)
                         )
+                    }
+                }
+            }
+
+            Box(modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)) {
+                Row {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_baseline_favorite_24),
+                        contentDescription = "Favorite"
+                    )
+                    Box(modifier = Modifier.padding(end = 16.dp)) {
+                        Text(text = "${article.publicReactionsCount}")
+                    }
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_baseline_mode_comment_24),
+                        contentDescription = "Comments"
+                    )
+                    Box(modifier = Modifier.padding(end = 16.dp)) {
+                        Text(text = "${article.commentsCount}")
                     }
                 }
             }
